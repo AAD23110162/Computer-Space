@@ -1,0 +1,61 @@
+@startuml
+class Jugador {
+    +IniciarJuego()
+    +FinalizarJuego()
+}
+
+abstract class NaveEspacial {
+    +Disparar()
+    +MoverArriba()
+    +MoverAbajo()
+    +MoverDerecha()
+    +MoverIzquierda()
+}
+
+class Enemigo extends NaveEspacial {
+    +Mover()
+}
+
+class Proyectil
+
+class Asteroides
+
+class Pantalla {
+    +MostrarJuego()
+    +ActualizarPantalla()
+}
+
+class Sonido {
+    +Reproducir()
+    +Detener()
+}
+
+class Puntuacion
+
+Jugador "1" *-- "1" NaveEspacial
+NaveEspacial "1" o-- "*" Proyectil
+Pantalla "1" -- "1" Juego
+Sonido "1" -- "1" Juego
+Puntuacion "1" -- "1" Juego
+
+class Juego {
+    -nivelActual: Nivel
+    +IniciarJuego()
+    +FinalizarJuego()
+    +NivelCompleto()
+}
+
+class Nivel {
+    -enemigos: Enemigo[*]
+    -asteroides: Asteroides[*]
+    -pantalla: Pantalla
+    -sonido: Sonido
+    -puntuacion: Puntuacion
+    +SpawnEnemigos()
+    +SpawnAsteroides()
+}
+
+Juego "1" *-- "1" Nivel
+Jugador "1" *-- "1" Juego
+
+@enduml
