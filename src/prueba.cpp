@@ -75,21 +75,32 @@ int main(int argc, char const *argv[])
 
     auto Pantalla = Screen::Create(
     Dimension::Fixed(176),  // Ancho fijo de 200 píxeles
-    Dimension::Full()   // Alto fijo de 100 píxeles
+    Dimension::Fixed(36)   // Alto fijo de 100 píxeles
     );
 
     // Parámetros de desplazamiento independientes para cada dibujo
-    vector<pair<int, int>> desplazamientos(dibujos.size(), {0, 0});
+    vector<pair<int, int>> desplazamientos1(dibujos.size(), {0, 0});
+    vector<pair<int, int>> desplazamientos2(dibujos.size(), {0, 0});
 
     // Desplazamiento específico para la nave uno (índice 0) y la nave dos (índice 1)
-    desplazamientos[0] = {1, 0}; // La nave uno se mueve 2 posiciones hacia la derecha
-    desplazamientos[1] = {1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos[2] = {-1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos[3] = {-1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos1[0] = {1, 0}; // La nave uno se mueve 2 posiciones hacia la derecha
+    desplazamientos1[1] = {1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos1[2] = {-1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos1[3] = {-1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
     
-    desplazamientos[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos1[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos1[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos1[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+
+    desplazamientos2[0] = {0, -1}; // La nave uno se mueve 2 posiciones hacia la derecha
+    desplazamientos2[1] = {0, 1}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos2[2] = {0, 1}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos2[3] = {0, -1}; // La nave dos se mueve 4 posiciones hacia abajo
+    
+    desplazamientos2[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos2[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos2[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+
 
     // Establecer las posiciones iniciales de cada dibujo
     size_t index = 0;
@@ -111,8 +122,36 @@ int main(int argc, char const *argv[])
         for (auto &&dibujo : dibujos)
         {
             // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos[index].first);
-            dibujo.DesplazarY(desplazamientos[index].second);
+            dibujo.DesplazarX(desplazamientos1[index].first);
+            dibujo.DesplazarY(desplazamientos1[index].second);
+            index++;
+        }
+
+        // Dibujar
+        for (auto &&dibujo : dibujos)
+        {
+            dibujo.Dibujar(Pantalla);
+        }
+        
+        Pantalla.Print();
+        cout << Pantalla.ResetPosition();          
+    }
+
+    this_thread::sleep_for(2s);
+
+    for (size_t i = 0; i < 158; i++)
+    {
+        
+        Pantalla.Clear();
+        this_thread::sleep_for(0.05s);
+
+        // Actualizar
+        size_t index = 0;
+        for (auto &&dibujo : dibujos)
+        {
+            // Aplicar desplazamientos individuales
+            dibujo.DesplazarX(desplazamientos2[index].first);
+            dibujo.DesplazarY(desplazamientos2[index].second);
             index++;
         }
 

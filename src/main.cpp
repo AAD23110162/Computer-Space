@@ -28,9 +28,9 @@ int main(int argc, char const *argv[])
 
     // Crear naves con posiciones iniciales específicas
     posicionesIniciales.push_back({-148, 1}); // Posición inicial del titulo
-    posicionesIniciales.push_back({200, 23}); // Posición inicial del la version
-    posicionesIniciales.push_back({-128, 29}); // Posición inicial del nombre
-    posicionesIniciales.push_back({-110, 10}); // Posición inicial de nave 1
+    posicionesIniciales.push_back({-114, 23}); // Posición inicial del la version
+    posicionesIniciales.push_back({190, 29}); // Posición inicial del nombre
+    posicionesIniciales.push_back({205, 10}); // Posición inicial de nave 1
 
     posicionesIniciales.push_back({0, 0}); // Posición inicial del margen1
     posicionesIniciales.push_back({0, 0}); // Posición inicial del margen2
@@ -83,9 +83,9 @@ int main(int argc, char const *argv[])
 
     // Desplazamiento específico para la nave uno (índice 0) y la nave dos (índice 1)
     desplazamientos[0] = {1, 0}; // La nave uno se mueve 2 posiciones hacia la derecha
-    desplazamientos[1] = {-1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos[2] = {1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos[3] = {1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos[1] = {1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos[2] = {-1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos[3] = {-1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
     
     desplazamientos[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
     desplazamientos[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
