@@ -14,22 +14,30 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     Archivo nave("./assets/images/nave.txt");
-    Archivo ovni("./assets/images/ovni.txt"); // Cambiar el archivo a "alien.txt"
+    Archivo ovni("./assets/images/ovni.txt");
+    
 
     list<Dibujo> dibujos;
-    // Crear naves
-    for (size_t i = 0; i < 3; i++)
+
+    // Vector para almacenar las posiciones iniciales de cada dibujo
+    vector<pair<int, int>> posicionesIniciales;
+
+    // Crear naves con posiciones iniciales específicas
+    posicionesIniciales.push_back({3, 8}); // Posición inicial de la nave 1
+    posicionesIniciales.push_back({4, 5}); // Posición inicial de la nave 2
+    posicionesIniciales.push_back({30, 2}); // Posición inicial de la nave 1
+    posicionesIniciales.push_back({6, 5}); // Posición inicial de la nave 2
+
+    for (size_t i = 0; i < 2; i++)
     {
-        Dibujo d = nave.CrearDibujo(); // Crear un dibujo basado en el contenido de "nave.txt"
-        d.EstablecerPosicion(i*10, 1);
+        Dibujo d = nave.CrearDibujo();
         dibujos.push_back(d);
     }
 
-    // Crear alienígenas
-    for (size_t i = 0; i < 3; i++)
+    // Crear alienígenas con posiciones iniciales específicas
+    for (size_t i = 0; i < 2; i++)
     {
-        Dibujo d = ovni.CrearDibujo(); // Crear un dibujo basado en el contenido de "alien.txt"
-        d.EstablecerPosicion(i*10, 6);
+        Dibujo d = ovni.CrearDibujo();
         dibujos.push_back(d);
     }
 
@@ -42,12 +50,18 @@ int main(int argc, char const *argv[])
     vector<pair<int, int>> desplazamientos(dibujos.size(), {0, 0});
 
     // Desplazamiento específico para la nave uno (índice 0) y la nave dos (índice 1)
-    desplazamientos[0] = {1, 2}; // La nave uno se mueve 2 posiciones hacia la derecha
-    desplazamientos[1] = {2, 3}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos[2] = {3, 4}; // La nave uno se mueve 2 posiciones hacia la derecha
-    desplazamientos[3] = {4, 5}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos[4] = {5, 6}; // La nave uno se mueve 2 posiciones hacia la derecha
-    desplazamientos[5] = {6, 7}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos[0] = {2, 0}; // La nave uno se mueve 2 posiciones hacia la derecha
+    desplazamientos[1] = {0, 4}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos[2] = {-2, 0}; // La nave uno se mueve 2 posiciones hacia la derecha
+    desplazamientos[3] = {0, 4}; // La nave dos se mueve 4 posiciones hacia abajo
+
+    // Establecer las posiciones iniciales de cada dibujo
+    size_t index = 0;
+    for (auto &&dibujo : dibujos)
+    {
+        dibujo.EstablecerPosicion(posicionesIniciales[index].first, posicionesIniciales[index].second);
+        index++;
+    }
 
     while(true){
         Pantalla.Clear();
