@@ -2,6 +2,7 @@
 #include <fstream>
 #include <list>
 #include <Dibujo.hpp>
+
 using namespace std;
 
 class Archivo
@@ -9,6 +10,7 @@ class Archivo
 private:
     fstream archivo;
     list<string> contenido;
+
 public:
     Archivo(string path)
     {
@@ -21,8 +23,9 @@ public:
         }
         archivo.close();
     }
-    Dibujo CrearDibujo(){
-        Dibujo temp(contenido,0,0);
+    Dibujo CrearDibujo()
+    {
+        Dibujo temp(contenido, 0, 0);
         return temp;
     }
     ~Archivo() {}

@@ -2,30 +2,37 @@
 #include <string>
 #include <list>
 #include <ftxui/screen/screen.hpp>
+
 using namespace std;
+
 class Dibujo
 {
 private:
     int posicionX;
     int posicionY;
     list<string> contenido;
+
 public:
-    Dibujo() {
+    Dibujo()
+    {
         this->posicionX = 0;
         this->posicionY = 0;
     }
-    Dibujo(int posicionX, int posicionY) {
+    Dibujo(int posicionX, int posicionY)
+    {
         this->posicionX = posicionX;
         this->posicionY = posicionY;
     }
-    Dibujo(list<string> contenido,int posicionX, int posicionY) {
+    Dibujo(list<string> contenido, int posicionX, int posicionY)
+    {
         this->contenido = contenido;
         this->posicionX = posicionX;
         this->posicionY = posicionY;
     }
 
-    void Dibujar(ftxui::Screen &Pantalla){
-        
+    void Dibujar(ftxui::Screen &Pantalla)
+    {
+
         int posicionPalabraY = 0;
         for (auto &&linea : contenido)
         {
@@ -46,13 +53,16 @@ public:
             posicionPalabraY++;
         }
     }
-    void DesplazarX(int distancia){
+    void DesplazarX(int distancia)
+    {
         posicionX += distancia;
     }
-    void DesplazarY(int distancia){
+    void DesplazarY(int distancia)
+    {
         posicionY += distancia;
     }
-    void EstablecerPosicion(int x, int y){
+    void EstablecerPosicion(int x, int y)
+    {
         this->posicionX = x;
         this->posicionY = y;
     }

@@ -142,13 +142,33 @@ int main(int argc, char const *argv[])
     desplazamientos8[0] = {1, 1}; 
     desplazamientos8[10] = {0, -5}; 
 
-    // Establecer las posiciones iniciales de cada dibujo
-    Anima anima1(Pantalla, dibujos1, posicionesIniciales1, desplazamientos1, 158, 0.05);
-    anima1.play();
-
+    //Creacion de la nimacion de cada uno de los elementos del juego
+    Anima animacion1(dibujos1, posicionesIniciales1, desplazamientos1);
+    animacion1.EstablecerPosicionesIniciales();
+    animacion1.ActualizarYDibujar(Pantalla, 158, 50ms);
     this_thread::sleep_for(2s);
+    
+    Anima animacion2(dibujos1, posicionesIniciales1, desplazamientos2);
+    animacion2.ActualizarYDibujar(Pantalla, 30, 80ms);
 
-    Anima anima2(Pantalla, dibujos2, posicionesIniciales2, desplazamientos2, 30, 0.08);
-    anima2.play();
+    Anima animacion3(dibujos2, posicionesIniciales2, desplazamientos3);
+    animacion3.EstablecerPosicionesIniciales();
+    animacion3.ActualizarYDibujar(Pantalla, 120, 25ms);
+
+    Anima animacion4(dibujos2, posicionesIniciales2, desplazamientos4);
+    animacion4.ActualizarYDibujar(Pantalla, 14, 25ms);
+
+    Anima animacion5(dibujos2, posicionesIniciales2, desplazamientos5);
+    animacion5.ActualizarYDibujar(Pantalla, 22, 50ms);
+
+    Anima animacion6(dibujos2, posicionesIniciales2, desplazamientos6);
+    animacion6.ActualizarYDibujar(Pantalla, 32, 100ms);
+
+    Anima animacion7(dibujos2, posicionesIniciales2, desplazamientos7);
+    animacion7.ActualizarYDibujar(Pantalla, 35, 100ms);
+
+    Anima animacion8(dibujos2, posicionesIniciales2, desplazamientos8);
+    animacion8.ActualizarYDibujar(Pantalla, 18, 200ms);
+
     return 0;
 }
