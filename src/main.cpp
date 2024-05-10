@@ -28,6 +28,7 @@ int main(int argc, char const *argv[])
     Archivo margen4("./assets/images/margen4.txt");
     Archivo bala1("./assets/images/bala1.txt");
     Archivo bala2("./assets/images/bala2.txt");
+    Archivo fin("./assets/images/fin.txt");
     list<Dibujo> dibujos2;
 
     // Vector para almacenar las posiciones iniciales de cada dibujo
@@ -54,6 +55,7 @@ int main(int argc, char const *argv[])
     posicionesIniciales2.push_back({-40, 25}); // Bala Nave
     posicionesIniciales2.push_back({-17, 25}); // Bala ovni1
     posicionesIniciales2.push_back({-7, 25}); // Bala ovni1
+    posicionesIniciales2.push_back({55, 100}); // Bala ovni1
 
     for (size_t i = 0; i < 1; i++)
     {
@@ -134,6 +136,12 @@ int main(int argc, char const *argv[])
         dibujos2.push_back(d);
     }
 
+        for (size_t i = 0; i < 1; i++)
+    {
+        Dibujo d = fin.CrearDibujo();
+        dibujos2.push_back(d);
+    }
+
     auto Pantalla = Screen::Create(
     Dimension::Fixed(176),  // Ancho fijo de 200 píxeles
     Dimension::Fixed(36)   // Alto fijo de 100 píxeles
@@ -146,6 +154,8 @@ int main(int argc, char const *argv[])
     vector<pair<int, int>> desplazamientos4(dibujos2.size(), {0, 0});
     vector<pair<int, int>> desplazamientos5(dibujos2.size(), {0, 0});
     vector<pair<int, int>> desplazamientos6(dibujos2.size(), {0, 0});
+    vector<pair<int, int>> desplazamientos7(dibujos2.size(), {0, 0});
+    vector<pair<int, int>> desplazamientos8(dibujos2.size(), {0, 0});
 
     // Desplazamiento específico para la nave uno (índice 0) y la nave dos (índice 1)
     desplazamientos1[0] = {1, 0}; // La nave uno se mueve 2 posiciones hacia la derecha
@@ -214,6 +224,19 @@ int main(int argc, char const *argv[])
     desplazamientos6[8] = {1, 1}; // La nave dos se mueve 4 posiciones hacia abajo
     desplazamientos6[9] = {-1, 1}; // La nave dos se mueve 4 posiciones hacia abajo
 
+    desplazamientos7[0] = {0,0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos7[1] = {-1,-2}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos7[2] = {0, 2}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos7[3] = {0, 1}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos7[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos7[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos7[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos7[7] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos7[8] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos7[9] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+
+    desplazamientos8[0] = {1, 1}; // La nave dos se mueve 4 posiciones hacia abajo
+    desplazamientos8[10] = {0, -5}; // La nave dos se mueve 4 posiciones hacia abajo
 
     // Establecer las posiciones iniciales de cada dibujo
     size_t index = 0;
@@ -389,5 +412,56 @@ int main(int argc, char const *argv[])
         cout << Pantalla.ResetPosition();          
     }
 
+    for (size_t i = 0; i < 35; i++)
+    {
+        
+        Pantalla.Clear();
+        this_thread::sleep_for(0.1s);
+
+        // Actualizar
+        size_t index2 = 0;
+        for (auto &&dibujo : dibujos2)
+        {
+            // Aplicar desplazamientos individuales
+            dibujo.DesplazarX(desplazamientos7[index2].first);
+            dibujo.DesplazarY(desplazamientos7[index2].second);
+            index2++;
+        }
+
+        // Dibujar
+        for (auto &&dibujo : dibujos2)
+        {
+            dibujo.Dibujar(Pantalla);
+        }
+        
+        Pantalla.Print();
+        cout << Pantalla.ResetPosition();          
+    }
+
+    for (size_t i = 0; i < 18; i++)
+    {
+        
+        Pantalla.Clear();
+        this_thread::sleep_for(0.2s);
+
+        // Actualizar
+        size_t index2 = 0;
+        for (auto &&dibujo : dibujos2)
+        {
+            // Aplicar desplazamientos individuales
+            dibujo.DesplazarX(desplazamientos8[index2].first);
+            dibujo.DesplazarY(desplazamientos8[index2].second);
+            index2++;
+        }
+
+        // Dibujar
+        for (auto &&dibujo : dibujos2)
+        {
+            dibujo.Dibujar(Pantalla);
+        }
+        
+        Pantalla.Print();
+        cout << Pantalla.ResetPosition();          
+    }
     return 0;
 }

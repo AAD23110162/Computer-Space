@@ -28,6 +28,7 @@ int main(int argc, char const *argv[])
     Archivo margen4("./assets/images/margen4.txt");
     Archivo bala1("./assets/images/bala1.txt");
     Archivo bala2("./assets/images/bala2.txt");
+    Archivo fin("./assets/images/fin.txt");
     list<Dibujo> dibujos2;
 
     // Vector para almacenar las posiciones iniciales de cada dibujo
@@ -54,6 +55,7 @@ int main(int argc, char const *argv[])
     posicionesIniciales2.push_back({-40, 25}); // Bala Nave
     posicionesIniciales2.push_back({-17, 25}); // Bala ovni1
     posicionesIniciales2.push_back({-7, 25}); // Bala ovni1
+    posicionesIniciales2.push_back({55, 100}); // Bala ovni1
 
     for (size_t i = 0; i < 1; i++)
     {
@@ -134,6 +136,12 @@ int main(int argc, char const *argv[])
         dibujos2.push_back(d);
     }
 
+        for (size_t i = 0; i < 1; i++)
+    {
+        Dibujo d = fin.CrearDibujo();
+        dibujos2.push_back(d);
+    }
+
     auto Pantalla = Screen::Create(
     Dimension::Fixed(176),  // Ancho fijo de 200 píxeles
     Dimension::Fixed(36)   // Alto fijo de 100 píxeles
@@ -147,92 +155,75 @@ int main(int argc, char const *argv[])
     vector<pair<int, int>> desplazamientos5(dibujos2.size(), {0, 0});
     vector<pair<int, int>> desplazamientos6(dibujos2.size(), {0, 0});
     vector<pair<int, int>> desplazamientos7(dibujos2.size(), {0, 0});
+    vector<pair<int, int>> desplazamientos8(dibujos2.size(), {0, 0});
 
-    // Desplazamiento específico para la nave uno (índice 0) y la nave dos (índice 1)
-    desplazamientos1[0] = {1, 0}; // La nave uno se mueve 2 posiciones hacia la derecha
-    desplazamientos1[1] = {1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos1[2] = {-1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos1[3] = {-1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    // Desplazamientos 1 de la animacion (Portada)
+    desplazamientos1[0] = {1, 0}; 
+    desplazamientos1[1] = {1, 0};
+    desplazamientos1[2] = {-1, 0};
+    desplazamientos1[3] = {-1, 0};
+
+
+    // Desplazamientos 2 de la animacion (Portada)
+    desplazamientos2[0] = {-10, -1};
+    desplazamientos2[1] = {10, 1};
+    desplazamientos2[2] = {10, 1};
+    desplazamientos2[3] = {-10, -1};
+
+
+    // Desplazamientos 3 de la animacion (Ejecucion del juego)
+
+    desplazamientos3[1] = {2, 0};
+    desplazamientos3[2] = {2, 0};
+    desplazamientos3[3] = {2, 0};
+
+    desplazamientos3[7] = {2, 0}; 
+    desplazamientos3[8] = {2, 0}; 
+    desplazamientos3[9] = {2, 0}; 
     
-    desplazamientos1[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos1[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos1[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
+    // Desplazamientos 4 de la animacion (Ejecucion del juego)
+    desplazamientos4[0] = {5,1}; 
+    desplazamientos4[1] = {-10, 0}; 
+    desplazamientos4[2] = {-10, 0}; 
+    desplazamientos4[3] = {-10, 0}; 
+    desplazamientos4[7] = {-10, 0}; 
+    desplazamientos4[8] = {-10, 0}; 
+    desplazamientos4[9] = {-10, 0}; 
 
-    desplazamientos2[0] = {-10, -1}; // La nave uno se mueve 2 posiciones hacia la derecha
-    desplazamientos2[1] = {10, 1}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos2[2] = {10, 1}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos2[3] = {-10, -1}; // La nave dos se mueve 4 posiciones hacia abajo
+    // Desplazamientos 5 de la animacion (Ejecucion del juego)
+
+    desplazamientos5[2] = {-2, -1}; 
+    desplazamientos5[3] = {0, -1}; 
+
+    desplazamientos5[8] = {-2, -1}; 
+    desplazamientos5[9] = {0, -1}; 
+
+    // Desplazamientos 6 de la animacion (Ejecucion del juego)
+
+    desplazamientos6[1] = {-1, 0}; 
+    desplazamientos6[2] = {1, 0}; 
+    desplazamientos6[3] = {1, 0}; 
+    desplazamientos6[7] = {2, -1}; 
+    desplazamientos6[8] = {1, 1}; 
+    desplazamientos6[9] = {-1, 1}; 
+
+    // Desplazamientos 7 de la animacion (Ejecucion del juego)
+
+    desplazamientos7[1] = {-1,-2}; 
+    desplazamientos7[2] = {0, 2}; 
+    desplazamientos7[3] = {0, 1}; 
+
     
-    desplazamientos2[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos2[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos2[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-
-    desplazamientos3[0] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos3[1] = {2, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos3[2] = {2, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos3[3] = {2, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-
-    desplazamientos3[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos3[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos3[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos3[7] = {2, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos3[8] = {2, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos3[9] = {2, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-
-    desplazamientos4[0] = {5,1}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos4[1] = {-10, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos4[2] = {-10, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos4[3] = {-10, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-
-    desplazamientos4[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos4[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos4[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos4[7] = {-10, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos4[8] = {-10, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos4[9] = {-10, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-
-    desplazamientos5[0] = {0,0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos5[1] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos5[2] = {-2, -1}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos5[3] = {0, -1}; // La nave dos se mueve 4 posiciones hacia abajo
-
-    desplazamientos5[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos5[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos5[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos5[7] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos5[8] = {-2, -1}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos5[9] = {0, -1}; // La nave dos se mueve 4 posiciones hacia abajo
-
-    desplazamientos6[0] = {0,0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos6[1] = {-1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos6[2] = {1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos6[3] = {1, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-
-    desplazamientos6[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos6[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos6[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos6[7] = {2, -1}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos6[8] = {1, 1}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos6[9] = {-1, 1}; // La nave dos se mueve 4 posiciones hacia abajo
-
-    desplazamientos7[0] = {0,0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos7[1] = {-1,-2}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos7[2] = {0, 2}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos7[3] = {0, 1}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos7[4] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos7[5] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos7[6] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos7[7] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos7[8] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-    desplazamientos7[9] = {0, 0}; // La nave dos se mueve 4 posiciones hacia abajo
-
+    // Desplazamientos 8 de la animacion (Fin del juego)
+    desplazamientos8[0] = {1, 1}; 
+    desplazamientos8[10] = {0, -5}; 
 
     // Establecer las posiciones iniciales de cada dibujo
-    size_t index = 0;
+    size_t index1 = 0;
     for (auto &&dibujo : dibujos1)
     {
-        dibujo.EstablecerPosicion(posicionesIniciales1[index].first, posicionesIniciales1[index].second);
-        index++;
+        dibujo.EstablecerPosicion(posicionesIniciales1[index1].first, posicionesIniciales1[index1].second);
+        index1++;
     }
 
     //while(true)
@@ -243,13 +234,13 @@ int main(int argc, char const *argv[])
         this_thread::sleep_for(0.05s);
 
         // Actualizar
-        size_t index = 0;
+        size_t index1 = 0;
         for (auto &&dibujo : dibujos1)
         {
             // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos1[index].first);
-            dibujo.DesplazarY(desplazamientos1[index].second);
-            index++;
+            dibujo.DesplazarX(desplazamientos1[index1].first);
+            dibujo.DesplazarY(desplazamientos1[index1].second);
+            index1++;
         }
 
         // Dibujar
@@ -271,13 +262,13 @@ int main(int argc, char const *argv[])
         this_thread::sleep_for(0.08s);
 
         // Actualizar
-        size_t index = 0;
+        size_t index1 = 0;
         for (auto &&dibujo : dibujos1)
         {
             // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos2[index].first);
-            dibujo.DesplazarY(desplazamientos2[index].second);
-            index++;
+            dibujo.DesplazarX(desplazamientos2[index1].first);
+            dibujo.DesplazarY(desplazamientos2[index1].second);
+            index1++;
         }
 
         // Dibujar
@@ -401,7 +392,7 @@ int main(int argc, char const *argv[])
         cout << Pantalla.ResetPosition();          
     }
 
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < 35; i++)
     {
         
         Pantalla.Clear();
@@ -427,6 +418,30 @@ int main(int argc, char const *argv[])
         cout << Pantalla.ResetPosition();          
     }
 
+    for (size_t i = 0; i < 18; i++)
+    {
+        
+        Pantalla.Clear();
+        this_thread::sleep_for(0.2s);
 
+        // Actualizar
+        size_t index2 = 0;
+        for (auto &&dibujo : dibujos2)
+        {
+            // Aplicar desplazamientos individuales
+            dibujo.DesplazarX(desplazamientos8[index2].first);
+            dibujo.DesplazarY(desplazamientos8[index2].second);
+            index2++;
+        }
+
+        // Dibujar
+        for (auto &&dibujo : dibujos2)
+        {
+            dibujo.Dibujar(Pantalla);
+        }
+        
+        Pantalla.Print();
+        cout << Pantalla.ResetPosition();          
+    }
     return 0;
 }
