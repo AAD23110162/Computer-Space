@@ -38,25 +38,25 @@ int main(int argc, char const *argv[])
     vector<pair<int, int>> posicionesIniciales2;
 
     // Crear naves con posiciones iniciales específicas
-    posicionesIniciales1.push_back({-148, 1});  // Posición inicial del titulo
+    posicionesIniciales1.push_back({-148, 1}); // Posición inicial del titulo
     posicionesIniciales1.push_back({-114, 23}); // Posición inicial del la version
-    posicionesIniciales1.push_back({190, 29});  // Posición inicial del nombre
-    posicionesIniciales1.push_back({205, 10});  // Posición inicial de nave 1
-    posicionesIniciales1.push_back({0, 0});     // Posición inicial del margen1
-    posicionesIniciales1.push_back({0, 0});     // Posición inicial del margen2
-    posicionesIniciales1.push_back({175, 0});   // Posición inicial del margen2.1
+    posicionesIniciales1.push_back({190, 29}); // Posición inicial del nombre
+    posicionesIniciales1.push_back({205, 10}); // Posición inicial de nave 1
+    posicionesIniciales1.push_back({0, 0}); // Posición inicial del margen1
+    posicionesIniciales1.push_back({0, 0}); // Posición inicial del margen2
+    posicionesIniciales1.push_back({175, 0}); // Posición inicial del margen2.1
 
-    posicionesIniciales2.push_back({70, 15});  // Posición inicial del numero de nivel
+    posicionesIniciales2.push_back({70, 15}); // Posición inicial del numero de nivel
     posicionesIniciales2.push_back({-40, 25}); // Posición inicial de la nave
     posicionesIniciales2.push_back({-20, 25}); // Posición inicial del ovni 1
     posicionesIniciales2.push_back({-10, 25}); // Posición inicial del ovni 2
-    posicionesIniciales2.push_back({0, 0});    // Posición inicial del margen3
-    posicionesIniciales2.push_back({0, 0});    // Posición inicial del margen4
-    posicionesIniciales2.push_back({175, 0});  // Posición inicial del margen4.1
-
+    posicionesIniciales2.push_back({0, 0}); // Posición inicial del margen3
+    posicionesIniciales2.push_back({0, 0}); // Posición inicial del margen4
+    posicionesIniciales2.push_back({175, 0}); // Posición inicial del margen4.1
+    
     posicionesIniciales2.push_back({-40, 25}); // Bala Nave
     posicionesIniciales2.push_back({-17, 25}); // Bala ovni1
-    posicionesIniciales2.push_back({-7, 25});  // Bala ovni1
+    posicionesIniciales2.push_back({-7, 25}); // Bala ovni1
     posicionesIniciales2.push_back({55, 100}); // Bala ovni1
 
     Crea c;
@@ -76,8 +76,8 @@ int main(int argc, char const *argv[])
     c.crea(fin, dibujos2, 1);
 
     auto Pantalla = Screen::Create(
-        Dimension::Fixed(176), // Ancho fijo de 200 píxeles
-        Dimension::Fixed(36)   // Alto fijo de 100 píxeles
+    Dimension::Fixed(176),  // Ancho fijo de 200 píxeles
+    Dimension::Fixed(36)   // Alto fijo de 100 píxeles
     );
 
     // Parámetros de desplazamiento independientes para cada dibujo
@@ -91,7 +91,7 @@ int main(int argc, char const *argv[])
     vector<pair<int, int>> desplazamientos8(dibujos2.size(), {0, 0});
 
     // Desplazamientos 1 de la animacion (Portada)
-    desplazamientos1[0] = {1, 0};
+    desplazamientos1[0] = {1, 0}; 
     desplazamientos1[1] = {1, 0};
     desplazamientos1[2] = {-1, 0};
     desplazamientos1[3] = {-1, 0};
@@ -106,266 +106,69 @@ int main(int argc, char const *argv[])
     desplazamientos3[1] = {2, 0};
     desplazamientos3[2] = {2, 0};
     desplazamientos3[3] = {2, 0};
-    desplazamientos3[7] = {2, 0};
-    desplazamientos3[8] = {2, 0};
-    desplazamientos3[9] = {2, 0};
-
+    desplazamientos3[7] = {2, 0}; 
+    desplazamientos3[8] = {2, 0}; 
+    desplazamientos3[9] = {2, 0}; 
+    
     // Desplazamientos 4 de la animacion (Ejecucion del juego)
-    desplazamientos4[0] = {5, 1};
-    desplazamientos4[1] = {-10, 0};
-    desplazamientos4[2] = {-10, 0};
-    desplazamientos4[3] = {-10, 0};
-    desplazamientos4[7] = {-10, 0};
-    desplazamientos4[8] = {-10, 0};
-    desplazamientos4[9] = {-10, 0};
+    desplazamientos4[0] = {5,1}; 
+    desplazamientos4[1] = {-10, 0}; 
+    desplazamientos4[2] = {-10, 0}; 
+    desplazamientos4[3] = {-10, 0}; 
+    desplazamientos4[7] = {-10, 0}; 
+    desplazamientos4[8] = {-10, 0}; 
+    desplazamientos4[9] = {-10, 0}; 
 
     // Desplazamientos 5 de la animacion (Ejecucion del juego)
-    desplazamientos5[2] = {-2, -1};
-    desplazamientos5[3] = {0, -1};
-    desplazamientos5[8] = {-2, -1};
-    desplazamientos5[9] = {0, -1};
+    desplazamientos5[2] = {-2, -1}; 
+    desplazamientos5[3] = {0, -1}; 
+    desplazamientos5[8] = {-2, -1}; 
+    desplazamientos5[9] = {0, -1}; 
 
     // Desplazamientos 6 de la animacion (Ejecucion del juego)
-    desplazamientos6[1] = {-1, 0};
-    desplazamientos6[2] = {1, 0};
-    desplazamientos6[3] = {1, 0};
-    desplazamientos6[7] = {2, -1};
-    desplazamientos6[8] = {1, 1};
-    desplazamientos6[9] = {-1, 1};
+    desplazamientos6[1] = {-1, 0}; 
+    desplazamientos6[2] = {1, 0}; 
+    desplazamientos6[3] = {1, 0}; 
+    desplazamientos6[7] = {2, -1}; 
+    desplazamientos6[8] = {1, 1}; 
+    desplazamientos6[9] = {-1, 1}; 
 
     // Desplazamientos 7 de la animacion (Ejecucion del juego)
-    desplazamientos7[1] = {-1, -2};
-    desplazamientos7[2] = {0, 2};
-    desplazamientos7[3] = {0, 1};
+    desplazamientos7[1] = {-1,-2}; 
+    desplazamientos7[2] = {0, 2}; 
+    desplazamientos7[3] = {0, 1}; 
 
     // Desplazamientos 8 de la animacion (Fin del juego)
-    desplazamientos8[0] = {1, 1};
-    desplazamientos8[10] = {0, -5};
+    desplazamientos8[0] = {1, 1}; 
+    desplazamientos8[10] = {0, -5}; 
 
-    // Establecer las posiciones iniciales de cada dibujo
-    size_t index1 = 0;
-    for (auto &&dibujo : dibujos1)
-    {
-        dibujo.EstablecerPosicion(posicionesIniciales1[index1].first, posicionesIniciales1[index1].second);
-        index1++;
-    }
-
-    // while(true)
-    for (size_t i = 0; i < 158; i++)
-    {
-
-        Pantalla.Clear();
-        this_thread::sleep_for(0.05s);
-
-        // Actualizar
-        size_t index1 = 0;
-        for (auto &&dibujo : dibujos1)
-        {
-            // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos1[index1].first);
-            dibujo.DesplazarY(desplazamientos1[index1].second);
-            index1++;
-        }
-
-        // Dibujar
-        for (auto &&dibujo : dibujos1)
-        {
-            dibujo.Dibujar(Pantalla);
-        }
-
-        Pantalla.Print();
-        cout << Pantalla.ResetPosition();
-    }
-
+    //Creacion de la nimacion de cada uno de los elementos del juego
+    Anima animacion1(dibujos1, posicionesIniciales1, desplazamientos1);
+    animacion1.EstablecerPosicionesIniciales();
+    animacion1.ActualizarYDibujar(Pantalla, 158, 50ms);
     this_thread::sleep_for(2s);
+    
+    Anima animacion2(dibujos1, posicionesIniciales1, desplazamientos2);
+    animacion2.ActualizarYDibujar(Pantalla, 30, 80ms);
 
-    for (size_t i = 0; i < 30; i++)
-    {
+    Anima animacion3(dibujos2, posicionesIniciales2, desplazamientos3);
+    animacion3.EstablecerPosicionesIniciales();
+    animacion3.ActualizarYDibujar(Pantalla, 120, 25ms);
 
-        Pantalla.Clear();
-        this_thread::sleep_for(0.08s);
+    Anima animacion4(dibujos2, posicionesIniciales2, desplazamientos4);
+    animacion4.ActualizarYDibujar(Pantalla, 14, 25ms);
 
-        // Actualizar
-        size_t index1 = 0;
-        for (auto &&dibujo : dibujos1)
-        {
-            // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos2[index1].first);
-            dibujo.DesplazarY(desplazamientos2[index1].second);
-            index1++;
-        }
+    Anima animacion5(dibujos2, posicionesIniciales2, desplazamientos5);
+    animacion5.ActualizarYDibujar(Pantalla, 22, 50ms);
 
-        // Dibujar
-        for (auto &&dibujo : dibujos1)
-        {
-            dibujo.Dibujar(Pantalla);
-        }
+    Anima animacion6(dibujos2, posicionesIniciales2, desplazamientos6);
+    animacion6.ActualizarYDibujar(Pantalla, 32, 100ms);
 
-        Pantalla.Print();
-        cout << Pantalla.ResetPosition();
-    }
+    Anima animacion7(dibujos2, posicionesIniciales2, desplazamientos7);
+    animacion7.ActualizarYDibujar(Pantalla, 35, 100ms);
 
-    size_t index2 = 0;
-    for (auto &&dibujo : dibujos2)
-    {
-        dibujo.EstablecerPosicion(posicionesIniciales2[index2].first, posicionesIniciales2[index2].second);
-        index2++;
-    }
+    Anima animacion8(dibujos2, posicionesIniciales2, desplazamientos8);
+    animacion8.ActualizarYDibujar(Pantalla, 18, 200ms);
 
-    for (size_t i = 0; i < 120; i++)
-    {
-
-        Pantalla.Clear();
-        this_thread::sleep_for(0.025s);
-
-        // Actualizar
-        size_t index2 = 0;
-        for (auto &&dibujo : dibujos2)
-        {
-            // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos3[index2].first);
-            dibujo.DesplazarY(desplazamientos3[index2].second);
-            index2++;
-        }
-
-        // Dibujar
-        for (auto &&dibujo : dibujos2)
-        {
-            dibujo.Dibujar(Pantalla);
-        }
-
-        Pantalla.Print();
-        cout << Pantalla.ResetPosition();
-    }
-
-    for (size_t i = 0; i < 14; i++)
-    {
-
-        Pantalla.Clear();
-        this_thread::sleep_for(0.025s);
-
-        // Actualizar
-        size_t index2 = 0;
-        for (auto &&dibujo : dibujos2)
-        {
-            // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos4[index2].first);
-            dibujo.DesplazarY(desplazamientos4[index2].second);
-            index2++;
-        }
-
-        // Dibujar
-        for (auto &&dibujo : dibujos2)
-        {
-            dibujo.Dibujar(Pantalla);
-        }
-
-        Pantalla.Print();
-        cout << Pantalla.ResetPosition();
-    }
-
-    for (size_t i = 0; i < 22; i++)
-    {
-
-        Pantalla.Clear();
-        this_thread::sleep_for(0.05s);
-
-        // Actualizar
-        size_t index2 = 0;
-        for (auto &&dibujo : dibujos2)
-        {
-            // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos5[index2].first);
-            dibujo.DesplazarY(desplazamientos5[index2].second);
-            index2++;
-        }
-
-        // Dibujar
-        for (auto &&dibujo : dibujos2)
-        {
-            dibujo.Dibujar(Pantalla);
-        }
-
-        Pantalla.Print();
-        cout << Pantalla.ResetPosition();
-    }
-
-    for (size_t i = 0; i < 32; i++)
-    {
-
-        Pantalla.Clear();
-        this_thread::sleep_for(0.1s);
-
-        // Actualizar
-        size_t index2 = 0;
-        for (auto &&dibujo : dibujos2)
-        {
-            // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos6[index2].first);
-            dibujo.DesplazarY(desplazamientos6[index2].second);
-            index2++;
-        }
-
-        // Dibujar
-        for (auto &&dibujo : dibujos2)
-        {
-            dibujo.Dibujar(Pantalla);
-        }
-
-        Pantalla.Print();
-        cout << Pantalla.ResetPosition();
-    }
-
-    for (size_t i = 0; i < 35; i++)
-    {
-
-        Pantalla.Clear();
-        this_thread::sleep_for(0.1s);
-
-        // Actualizar
-        size_t index2 = 0;
-        for (auto &&dibujo : dibujos2)
-        {
-            // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos7[index2].first);
-            dibujo.DesplazarY(desplazamientos7[index2].second);
-            index2++;
-        }
-
-        // Dibujar
-        for (auto &&dibujo : dibujos2)
-        {
-            dibujo.Dibujar(Pantalla);
-        }
-
-        Pantalla.Print();
-        cout << Pantalla.ResetPosition();
-    }
-
-    for (size_t i = 0; i < 18; i++)
-    {
-
-        Pantalla.Clear();
-        this_thread::sleep_for(0.2s);
-
-        // Actualizar
-        size_t index2 = 0;
-        for (auto &&dibujo : dibujos2)
-        {
-            // Aplicar desplazamientos individuales
-            dibujo.DesplazarX(desplazamientos8[index2].first);
-            dibujo.DesplazarY(desplazamientos8[index2].second);
-            index2++;
-        }
-
-        // Dibujar
-        for (auto &&dibujo : dibujos2)
-        {
-            dibujo.Dibujar(Pantalla);
-        }
-
-        Pantalla.Print();
-        cout << Pantalla.ResetPosition();
-    }
     return 0;
 }

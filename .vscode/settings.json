@@ -3,6 +3,7 @@
         "iostream": "cpp",
         "thread": "cpp",
         "string": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "chrono": "cpp"
     }
 }

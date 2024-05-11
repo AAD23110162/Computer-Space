@@ -1,61 +1,108 @@
-@startuml
-class Jugador {
+@startuml Computer Space
+
+class Dibujo 
+{
+    -posicionX: int
+    -posicionY: int
+    -contenido: list<string>
+    +Dibujo()
+    +Dibujo(int, int)
+    +Dibujo(list<string>, int, int)
+    +Dibujar(ftxui::Screen&)
+    +DesplazarX(int)
+    +DesplazarY(int)
+    +EstablecerPosicion(int, int)
+}
+
+class Archivo 
+{
+    -archivo: fstream
+    -contenido: list<string>
+    +Archivo(string)
+    +CrearDibujo(): Dibujo
+}
+
+class Crea 
+{
+    +crea(Archivo&, list<Dibujo>&, size_t)
+}
+
+class Anima 
+{
+    -dibujos_: list<Dibujo>&
+    -posicionesIniciales_: vector<pair<int, int>>&
+    -desplazamientos_: vector<pair<int, int>>&
+    +Anima(list<Dibujo>&, vector<pair<int, int>>&, vector<pair<int, int>>&)
+    +EstablecerPosicionesIniciales()
+    +ActualizarYDibujar(Screen&, size_t, chrono::milliseconds)
+}
+
+Crea "1" o-- "1" Archivo
+Crea "1" o-- "*" Dibujo
+Anima "1" o-- "*" Dibujo
+
+class NaveEspacial 
+{
+    +Disparar()
+    +DesplazarX(int)
+    +DesplazarY(int)
+}
+
+class Jugador 
+{
     +IniciarJuego()
     +FinalizarJuego()
 }
 
-abstract class NaveEspacial {
-    +Disparar()
-    +MoverArriba()
-    +MoverAbajo()
-    +MoverDerecha()
-    +MoverIzquierda()
-}
-
-class Enemigo extends NaveEspacial {
+class Ovni extends NaveEspacial 
+{
     +Mover()
 }
 
-class Proyectil
+class Proyectil 
+{
+    +Mover()
+}
 
-class Asteroides
-
-class Pantalla {
+class Pantalla 
+{
     +MostrarJuego()
     +ActualizarPantalla()
 }
 
-class Sonido {
+class Sonido 
+{
     +Reproducir()
     +Detener()
 }
 
 class Puntuacion
 
-Jugador "1" *-- "1" NaveEspacial
-NaveEspacial "1" o-- "*" Proyectil
-Pantalla "1" -- "1" Juego
-Sonido "1" -- "1" Juego
-Puntuacion "1" -- "1" Juego
-
-class Juego {
-    -nivelActual: Nivel
+class Juego 
+{
+    -jugador: Jugador
+    -navesEnemigas: list<Ovni>
+    -proyectilesNaveJugador: list<Proyectil>
+    -proyectilesOvnis: list<Proyectil>
+    -pantalla: Pantalla
+    -sonido: Sonido
+    -puntuacion: Puntuacion
     +IniciarJuego()
     +FinalizarJuego()
     +NivelCompleto()
 }
 
-class Nivel {
-    -enemigos: Enemigo[*]
-    -asteroides: Asteroides[*]
-    -pantalla: Pantalla
-    -sonido: Sonido
-    -puntuacion: Puntuacion
-    +SpawnEnemigos()
-    +SpawnAsteroides()
-}
-
-Juego "1" *-- "1" Nivel
-Jugador "1" *-- "1" Juego
+Juego "1" *-- "1" Anima
+Juego "1" *-- "1" Jugador
+Juego "1" o-- "*" Ovni
+Juego "1" o-- "*" Proyectil
+Juego "1" -- "1" Pantalla
+Juego "1" -- "1" Sonido
+Juego "1" -- "1" Puntuacion
+Jugador "1" *-- "1" NaveEspacial
+NaveEspacial "1" o-- "*" Proyectil
+Ovni "1" o-- "*" Proyectil
+Jugador "1" o-- "*" Proyectil : dispara
+Ovni "1" o-- "*" Proyectil : dispara
 
 @enduml

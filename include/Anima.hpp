@@ -13,12 +13,12 @@ using namespace ftxui;
 class Anima
 {
 private:
-    std::list<Dibujo> &dibujos_;
-    std::vector<std::pair<int, int>> &posicionesIniciales_;
-    std::vector<std::pair<int, int>> &desplazamientos_;
+    list<Dibujo> &dibujos_;
+    vector<pair<int, int>> &posicionesIniciales_;
+    vector<pair<int, int>> &desplazamientos_;
 
 public:
-    Anima(std::list<Dibujo> &dibujos, std::vector<std::pair<int, int>> &posicionesIniciales, std::vector<std::pair<int, int>> &desplazamientos)
+    Anima(list<Dibujo> &dibujos, vector<pair<int, int>> &posicionesIniciales, vector<pair<int, int>> &desplazamientos)
         : dibujos_(dibujos), posicionesIniciales_(posicionesIniciales), desplazamientos_(desplazamientos) {}
 
     void EstablecerPosicionesIniciales()
@@ -57,4 +57,5 @@ public:
             cout << pantalla.ResetPosition();
         }
     }
+    ~Anima() {}
 };
